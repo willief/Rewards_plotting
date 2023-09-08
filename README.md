@@ -33,7 +33,7 @@ Track and plot Safe Network node rewards.
   This job will take a snapshot of your node/nodes resources and rewards balance every 10 minutes. The data will be appended to `resources.log`.
 
 ### 3. Graph Generation
-
+- Once you have run for a few hours and have enough data you can generate the graph.
 - Before running `interactive_rewards.py`, modify the paths specified on lines 78 and 82.
 - Execute the script:
   ```bash
