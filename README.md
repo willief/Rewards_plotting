@@ -30,7 +30,7 @@ Track and plot Safe Network node rewards.
   ```bash
   */10 * * * * /bin/bash $HOME/resources.sh >> $HOME/resources.log 2>&1
   ```
-  This job will take a snapshot of your node/nodes resources and rewards balance every 10 minutes. The data will be appended to `resources.log`, and any errors will be logged to `resources_errors.log`.
+  This job will take a snapshot of your node/nodes resources and rewards balance every 10 minutes. The data will be appended to `resources.log`.
 
 ### 3. Graph Generation
 
