@@ -34,7 +34,7 @@ Track and plot Safe Network node rewards.
 
 ### 3. Graph Generation
 
-- Before running `interactive_rewards.py`, modify the paths specified on lines 78 and 82 to point to the desired locations or data sources.
+- Before running `interactive_rewards.py`, modify the paths specified on lines 78 and 82.
 - Execute the script:
   ```bash
   python3 interactive_rewards.py
