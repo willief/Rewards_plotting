@@ -1,5 +1,12 @@
 #!/bin/bash
 
+#This script requires root user privileges
+
+# Check if the script is running with sudo privileges
+if [ "$EUID" -ne 0 ]; then
+    echo "Please run this script with sudo or as the root user."
+    exit 1
+fi
 # Check if Python 3 is installed
 if ! command -v python3 &>/dev/null; then
     echo "Python 3 is not installed. Installing..."
@@ -26,10 +33,10 @@ echo "Python 3 and pip setup complete."
 
 # Install other pre-reqs
 echo "installing pandas"
-pip install pandas
+sudo pip install pandas
 
 echo "installing plotly"
-pip install plotly.express
+sudo pip install plotly.express
 
 echo "All required packages have been installed"
 
