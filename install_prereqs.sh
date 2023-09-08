@@ -22,6 +22,15 @@ fi
 echo "Upgrading pip to the latest version..."
 sudo -H pip3 install --upgrade pip
 
-# Additional setup tasks can be added here if needed
-
 echo "Python 3 and pip setup complete."
+
+# Install other pre-reqs
+echo "installing pandas"
+pip install pandas
+
+echo "installing plotly"
+pip install plotly.express
+
+echo "All required packages have been installed"
+
+
