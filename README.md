@@ -1,27 +1,29 @@
 # Rewards_plotting
+
 Safe Network node rewards tracking/plotting.
 
-Python3 required.
+## Requirements
+- Python3
 
-Add `resources.sh` to your home dir. 
-(or modify as needed if you prefer elsewhere)
+## Setup
 
-Start a cron job to log node data.
-run `crontab -e`
-Add the following job.
-`**/10 * * * * /bin/bash $HOME/resources.sh >> $HOME/resources.log 2>&1`
+1. Add `resources.sh` to your home directory. 
+   - Alternatively, modify the location as needed if you prefer it elsewhere.
 
-This will take a snapshot of your node/nodes resources and rewards balance every 10 minutes and create a log thereof, `resources.log`.
+2. Start a cron job to log node data.
+   - Run the command `crontab -e` to edit the crontab.
+   - Add the following job:
+     ```
+     **/10 * * * * /bin/bash $HOME/resources.sh >> $HOME/resources.log 2>&1
+     ```
+   This will take a snapshot of your node/nodes resources and rewards balance every 10 minutes and append it to the `resources.log` file in your home directory.
 
-Once you have logged sufficient data you can use `interactive_rewards.py` to create the graph.
+3. Once you have logged sufficient data, use `interactive_rewards.py` to create the graph.
+   - Modify the `path` on lines 78 and 82 in the script.
+   - Run the script with the command `python3 interactive_rewards.py`.
 
-Modify the`path` lines 78 and 82.
+4. The plot will be saved in your home directory as `rewards_balance_plot.html`. This graph is interactive. You can zoom in, select specific nodes, and more.
 
-run `python3 interactive_rewards.py`
-
-The plot will be saved in your home dir as `rewards_balance_plot.html`
-The graph is interactive.
-You can zoom, select specific nodes etc. 
 
 
 ![Screenshot from 2023-09-08 15-58-19](https://github.com/javages/Rewards_plotting/assets/59794857/7391838c-7f63-4dfb-bddb-87174d0baa42)
