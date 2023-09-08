@@ -1,5 +1,5 @@
 # Rewards_plotting
-Safe Network rewards tracking
+Safe Network node rewards tracking/plotting.
 
 Python3 required.
 
