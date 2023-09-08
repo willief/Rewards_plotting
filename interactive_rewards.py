@@ -1,9 +1,41 @@
 import pandas as pd
 import plotly.express as px
 
+def convert_value(value, format_type, default=0):
+    if format_type == 'float':
+        try:
+            return float(value)
+        except ValueError:
+            return default
+    elif format_type == 'int':
+        try:
+            return int(value)
+        except ValueError:
+            return default
+    elif format_type == 'float_mb':
+        try:
+            return float(value.replace("MB", "").strip())
+        except ValueError:
+            return default
+    elif format_type == 'float_percent':
+        try:
+            return float(value.replace("%", "").strip())
+        except ValueError:
+            return default
+    return value
+
 def enhanced_extract_data(filename):
     with open(filename, "r") as file:
         lines = file.readlines()
+
+    formats = {
+        "Memory used": "float_mb",
+        "Records": "int",
+        "Disk usage": "float_mb",
+        "CPU usage": "float_percent",
+        "File descriptors": "int",
+        "Rewards balance": "float"
+    }
 
     data = []
     idx = 0
@@ -15,54 +47,28 @@ def enhanced_extract_data(filename):
             idx += 1
             while idx < len(lines) and "------------------------------------------" not in lines[idx]:
                 if ": " in lines[idx]:
-                    key, value = lines[idx].split(": ", 1)
-                    entry_data[key] = value.strip()
+                    key, raw_value = lines[idx].split(": ", 1)
+                    if key in formats:
+                        value = convert_value(raw_value, formats[key])
+                    else:
+                        value = raw_value.strip()
+                    entry_data[key] = value
                 idx += 1
             
             required_keys = ["Global (UTC) Timestamp", "Node", "PID", "Memory used", "Records", 
                              "Disk usage", "CPU usage", "File descriptors", "Rewards balance"]
             if all(k in entry_data for k in required_keys):
-                node = entry_data["Node"]
-                pid = entry_data["PID"]
-                
-                # Error handling for Memory
-                try:
-                    memory = float(entry_data["Memory used"].replace("MB", "").strip())
-                except ValueError:
-                    memory = 0.0
-                
-                # Error handling for Records
-                try:
-                    records = int(entry_data["Records"])
-                except ValueError:
-                    records = 0
-                
-                # Error handling for Disk Usage
-                try:
-                    disk_usage = float(entry_data["Disk usage"].replace("MB", "").strip())
-                except ValueError:
-                    disk_usage = 0.0
-                
-                # Error handling for CPU Usage
-                try:
-                    cpu_usage = float(entry_data["CPU usage"].replace("%", "").strip())
-                except ValueError:
-                    cpu_usage = 0.0
-                
-                # Error handling for File Descriptors
-                try:
-                    file_descriptors = int(entry_data["File descriptors"])
-                except ValueError:
-                    file_descriptors = 0
-                
-                # Error handling for Rewards Balance
-                try:
-                    rewards_balance = float(entry_data["Rewards balance"])
-                except ValueError:
-                    rewards_balance = 0.0
-                
-                data.append([timestamp, node, pid, memory, records, disk_usage, 
-                             cpu_usage, file_descriptors, rewards_balance])
+                data.append([
+                    timestamp, 
+                    entry_data["Node"], 
+                    entry_data["PID"], 
+                    entry_data["Memory used"], 
+                    entry_data["Records"],
+                    entry_data["Disk usage"], 
+                    entry_data["CPU usage"], 
+                    entry_data["File descriptors"], 
+                    entry_data["Rewards balance"]
+                ])
         else:
             idx += 1
 
@@ -72,6 +78,7 @@ def enhanced_extract_data(filename):
     if df["Timestamp"].dt.tz is None:
         df["Timestamp"] = df["Timestamp"].dt.tz_localize('UTC')
     return df
+
 
 # Visualization
 custom_hovertemplate = "<br>" + \
