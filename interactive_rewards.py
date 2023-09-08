@@ -24,16 +24,42 @@ def enhanced_extract_data(filename):
             if all(k in entry_data for k in required_keys):
                 node = entry_data["Node"]
                 pid = entry_data["PID"]
+                
+                # Error handling for Memory
                 try:
                     memory = float(entry_data["Memory used"].replace("MB", "").strip())
                 except ValueError:
                     memory = 0.0
                 
-                records = int(entry_data["Records"])
-                disk_usage = float(entry_data["Disk usage"].replace("MB", "").strip() or 0)
-                cpu_usage = float(entry_data["CPU usage"].replace("%", "").strip() or 0)
-                file_descriptors = int(entry_data["File descriptors"] or 0)
-                rewards_balance = float(entry_data["Rewards balance"] or 0)
+                # Error handling for Records
+                try:
+                    records = int(entry_data["Records"])
+                except ValueError:
+                    records = 0
+                
+                # Error handling for Disk Usage
+                try:
+                    disk_usage = float(entry_data["Disk usage"].replace("MB", "").strip())
+                except ValueError:
+                    disk_usage = 0.0
+                
+                # Error handling for CPU Usage
+                try:
+                    cpu_usage = float(entry_data["CPU usage"].replace("%", "").strip())
+                except ValueError:
+                    cpu_usage = 0.0
+                
+                # Error handling for File Descriptors
+                try:
+                    file_descriptors = int(entry_data["File descriptors"])
+                except ValueError:
+                    file_descriptors = 0
+                
+                # Error handling for Rewards Balance
+                try:
+                    rewards_balance = float(entry_data["Rewards balance"])
+                except ValueError:
+                    rewards_balance = 0.0
                 
                 data.append([timestamp, node, pid, memory, records, disk_usage, 
                              cpu_usage, file_descriptors, rewards_balance])
@@ -79,7 +105,7 @@ def visualize(df):
     fig.write_html(output_html_path)
 
 # Modify as needed.
-df = enhanced_extract_data("/home/{user}/resources.log")
+df = enhanced_extract_data("/home/{user}/resources.log)
 visualize(df)
 
 
