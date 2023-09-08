@@ -11,7 +11,7 @@ run `crontab -e`
 Add the following job.
 `**/10 * * * * /bin/bash $HOME/resources.sh >> $HOME/resources.log 2>&1`
 
-This will take a snapshot of you node/nodes resources and rewards balance every 10 minutes and creat a log thereof, `resources.log`.
+This will take a snapshot of your node/nodes resources and rewards balance every 10 minutes and create a log thereof, `resources.log`.
 
 Once you have logged sufficient data you can use interactive_rewards.py to create the graph.
 Modify the`path` to yours lines 78 and 82.
