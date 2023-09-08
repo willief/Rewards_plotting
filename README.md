@@ -14,7 +14,7 @@ Add the following job.
 This will take a snapshot of your node/nodes resources and rewards balance every 10 minutes and create a log thereof, `resources.log`.
 
 Once you have logged sufficient data you can use `interactive_rewards.py` to create the graph.
-Modify the`path` to yours lines 78 and 82.
+Modify the`path` lines 78 and 82.
 run `python3 interactive_rewards.py`
 
 The plot will be saved in your home dir as `rewards_balance_plot.html`
