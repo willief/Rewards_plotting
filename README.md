@@ -18,3 +18,8 @@ Modify the`path` to yours lines 78 and 82.
 run `python3 interactive_rewards.py`
 
 The plot will be saved in your home dir as `rewards_balance_plot.html`
+The graph is interactive.
+You can zoom, select specific nodes etc. 
+
+
+![Screenshot from 2023-09-08 15-58-19](https://github.com/javages/Rewards_plotting/assets/59794857/7391838c-7f63-4dfb-bddb-87174d0baa42)
