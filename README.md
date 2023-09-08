@@ -28,7 +28,7 @@ Track and plot Safe Network node rewards.
   ```
 - Add the following job to run the script every 10 minutes:
   ```bash
-  */10 * * * * /bin/bash $HOME/resources.sh >> $HOME/resources.log 2>> $HOME/resources_errors.log
+  */10 * * * * /bin/bash /home/wyse1/resources.sh >> /home/wyse1/resources.log 2>&1
   ```
   This job will take a snapshot of your node/nodes resources and rewards balance every 10 minutes. The data will be appended to `resources.log`, and any errors will be logged to `resources_errors.log`.
 
