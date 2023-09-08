@@ -75,11 +75,11 @@ def visualize(df):
         yaxis=dict(showgrid=True, gridcolor='lightgrey', gridwidth=0.1)
     )
     # Modify as needed.
-    output_html_path = "/home/josh/rewards_balance_plot.html"
+    output_html_path = "/home/{user}/rewards_balance_plot.html"
     fig.write_html(output_html_path)
 
 # Modify as needed.
-df = enhanced_extract_data("/home/josh/resources.log")
+df = enhanced_extract_data("/home/{user}/resources.log")
 visualize(df)
 
 
