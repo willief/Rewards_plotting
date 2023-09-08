@@ -13,7 +13,7 @@ Track and plot Safe Network node rewards.
 ## Setup
 
 ### 1. Script Placement & Permissions
-  For simplicity I am use the home dir, modify as needed.
+  For simplicity I am using the home dir, modify as needed.
 
 - Place `resources.sh` in your home directory. 
 - Ensure the script is executable:
