@@ -14,7 +14,7 @@ Safe Network node rewards tracking/plotting.
    - Run the command `crontab -e` to edit the crontab.
    - Add the following job:
      ```
-     **/10 * * * * /bin/bash $HOME/resources.sh >> $HOME/resources.log 2>&1
+     */10 * * * * /bin/bash $HOME/resources.sh >> $HOME/resources.log 2>&1
      ```
    This will take a snapshot of your node/nodes resources and rewards balance every 10 minutes and append it to the `resources.log` file in your home directory.
 
