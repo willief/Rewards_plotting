@@ -1,7 +1,7 @@
 # Rewards_plotting
 Safe Network rewards tracking
 
-Python required.
+Python3 required.
 
 Add `resources.sh` to your home dir. 
 (or modify as needed if you prefer elsewhere)
