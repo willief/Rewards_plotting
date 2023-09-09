@@ -32,6 +32,9 @@ For an easier setup, consider using the `install_prereqs.sh` script:
 For simplicity, I am using the home directory; modify as needed.
 
 - Place `resources.sh` in your home directory.
+- ```bash
+  wget https://raw.githubusercontent.com/javages/Rewards_plotting/main/resources.sh
+  ```
 - Ensure the script is executable:
   ```bash
   chmod +x $HOME/resources.sh
