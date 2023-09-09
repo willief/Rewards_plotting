@@ -32,6 +32,9 @@ Track and plot Safe Network node rewards.
   */10 * * * * /bin/bash $HOME/resources.sh >> $HOME/resources.log 2>&1
   ```
   This job will take a snapshot of your node/nodes resources and rewards balance every 10 minutes. The data will be appended to `resources.log`.
+  
+  Note: Don't forget to comment out or remove this cron job if you no longer need it (in between tests), as it will run indefinitely otherwise. 
+  
 
 ### 3. Graph Generation
 - Once you have run for a few hours and have enough data you can generate the graph.
