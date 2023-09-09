@@ -7,7 +7,7 @@ Track and plot Safe Network node rewards.
 - Python3
 - Ensure any dependencies required by `interactive_rewards.py` are installed:
   ```bash
-  pip install <library-name>
+  pip3 install <library-name>
   ```
 
 ## Setup
