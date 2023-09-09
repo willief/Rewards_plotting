@@ -48,6 +48,7 @@ For simplicity, I am using the home directory; modify as needed.
   This job will take a snapshot of your node/nodes resources and rewards balance every 10 minutes. The data will be appended to `resources.log`.
 
   Note: Don't forget to comment out or remove this cron job if you no longer need it (in between tests), as it will run indefinitely otherwise.
+  Also remember to remove the resources.log file between runs!
 
 ### 3. Graph Generation
 - Once you have run for a few hours and have enough data, you can generate the graph.
