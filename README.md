@@ -4,6 +4,8 @@ Track and plot Safe Network node rewards.
 
 ## Requirements
 
+- safe client
+- safe node
 - Python3
 - Ensure any dependencies required by `interactive_rewards.py` are installed:
   ```bash
