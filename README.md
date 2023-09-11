@@ -4,60 +4,44 @@ Track and plot Safe Network node rewards.
 
 ## Requirements
 
+- recent Linux. preferably Ubuntu
 - safe client
 - safe node
-- Python3
-- Ensure any dependencies required by `interactive_rewards.py` are installed:
-  ```bash
-  pip3 install <library-name>
   ```
 ## Setup
 
-### 0. Requirements Installation
-For an easier setup, consider using the `install_prereqs.sh` script:
 
-- Place `install_prereqs.sh` in your preferred directory.
 - Ensure the script is executable:
   ```bash
-  chmod +x path_to_script/install_prereqs.sh
+  chmod +x path_to_script/setup.sh
   ```
-- Execute the script with root privileges:
-  ```bash
-  sudo ./path_to_script/install_prereqs.sh
+- Execute the script
+  ./path_to_script/install.sh
   ```
 
-> **Note**: It's beneficial to consider using a virtual environment when installing Python packages. This helps to avoid potential conflicts between packages and ensures a clean, isolated environment for your project. If you're familiar with Python virtual environments, you might want to create one before running the `install_prereqs.sh` script and then activate it every time you run `interactive_rewards.py`.
+> **Note**: This script will install a virtual environment using venv. This helps to avoid potential conflicts between packages and ensures a clean, isolated environment for your project.
 
 ### 1. Script Placement & Permissions
-For simplicity, I am using the home directory; modify as needed.
-
-- Place `resources.sh` in your home directory.
-- ```bash
-  wget https://raw.githubusercontent.com/javages/Rewards_plotting/main/resources.sh
-  ```
-- Ensure the script is executable:
-  ```bash
-  chmod +x $HOME/resources.sh
-  ```
+This script will install to $(HOME)/.local/share/safe/tools/Rewards_plotting; modify as needed.
+All necessary permissions and crontab entries are set by the script
 
 ### 2. Cron Job Setup
-
-- Open the crontab for editing:
-  ```bash
-  crontab -e
-  ```
-- Add the following job to run the script every 10 minutes:
-  ```bash
+```
+- The setup script will add the following entry to your crontab
+ 
   */10 * * * * /bin/bash $HOME/resources.sh >> $HOME/resources.log 2>&1
   ```
   This job will take a snapshot of your node/nodes resources and rewards balance every 10 minutes. The data will be appended to `resources.log`.
+- To change this interval or data destination, ppen the crontab for editing:
+  ```bash
+  crontab -e
 
   Note: Don't forget to comment out or remove this cron job if you no longer need it (in between tests), as it will run indefinitely otherwise.
-  Also remember to remove the resources.log file between runs!
+  Also remember to remove the resources.log file between runs!  ##TODO   clean=up script
 
 ### 3. Graph Generation
 - Once you have run for a few hours and have enough data, you can generate the graph.
-- Before running `interactive_rewards.py`, modify the paths specified on lines 78 and 82.
+- Before running `interactive_rewards.py`, modify the paths specified on lines 111 and 115.
 - Execute the script:
   ```bash
   python3 interactive_rewards.py
