@@ -1,5 +1,15 @@
 import pandas as pd
 import plotly.express as px
+import os
+
+
+# Get the user's home directory
+user_home = os.path.expanduser("~")
+
+# Define the rest of the path
+basedir = os.path.join(user_home, ".local", "share",
+                       "safe", "tools", 'rewards_plotting')
+
 
 def convert_value(value, format_type, default=0):
     if format_type == 'float':
@@ -24,6 +34,7 @@ def convert_value(value, format_type, default=0):
             return default
     return value
 
+
 def enhanced_extract_data(filename):
     with open(filename, "r") as file:
         lines = file.readlines()
@@ -43,7 +54,7 @@ def enhanced_extract_data(filename):
         if "Global (UTC) Timestamp:" in lines[idx]:
             timestamp = lines[idx].split(": ", 1)[1].strip()
             entry_data = {"Global (UTC) Timestamp": timestamp}
-            
+
             idx += 1
             while idx < len(lines) and "------------------------------------------" not in lines[idx]:
                 if ": " in lines[idx]:
@@ -54,27 +65,28 @@ def enhanced_extract_data(filename):
                         value = raw_value.strip()
                     entry_data[key] = value
                 idx += 1
-            
-            required_keys = ["Global (UTC) Timestamp", "Node", "PID", "Memory used", "Records", 
+
+            required_keys = ["Global (UTC) Timestamp", "Node", "PID", "Memory used", "Records",
                              "Disk usage", "CPU usage", "File descriptors", "Rewards balance"]
             if all(k in entry_data for k in required_keys):
                 data.append([
-                    timestamp, 
-                    entry_data["Node"], 
-                    entry_data["PID"], 
-                    entry_data["Memory used"], 
+                    timestamp,
+                    entry_data["Node"],
+                    entry_data["PID"],
+                    entry_data["Memory used"],
                     entry_data["Records"],
-                    entry_data["Disk usage"], 
-                    entry_data["CPU usage"], 
-                    entry_data["File descriptors"], 
+                    entry_data["Disk usage"],
+                    entry_data["CPU usage"],
+                    entry_data["File descriptors"],
                     entry_data["Rewards balance"]
                 ])
         else:
             idx += 1
 
-    df = pd.DataFrame(data, columns=["Timestamp", "Node", "PID", "Memory", "Records", 
-                                    "Disk usage", "CPU usage", "File descriptors", "Rewards balance"])
-    df["Timestamp"] = pd.to_datetime(df["Timestamp"], format='%a %b %d %H:%M:%S %Z %Y', errors='coerce')
+    df = pd.DataFrame(data, columns=["Timestamp", "Node", "PID", "Memory", "Records",
+                                     "Disk usage", "CPU usage", "File descriptors", "Rewards balance"])
+    df["Timestamp"] = pd.to_datetime(
+        df["Timestamp"], format='%a %b %d %H:%M:%S %Z %Y', errors='coerce')
     if df["Timestamp"].dt.tz is None:
         df["Timestamp"] = df["Timestamp"].dt.tz_localize('UTC')
     return df
@@ -89,11 +101,12 @@ custom_hovertemplate = "<br>" + \
                        "File descriptors: %{customdata[4]}<br>" + \
                        "Rewards balance: %{customdata[5]:.9f}<br>"
 
+
 def visualize(df):
     fig = px.line(df, x="Timestamp", y="Rewards balance", color="PID", line_group="PID",
-                  custom_data=["Records", "Disk usage", "Memory", "CPU usage", 
+                  custom_data=["Records", "Disk usage", "Memory", "CPU usage",
                                "File descriptors", "Rewards balance"],
-                  title="Rewards Balance Over Time for Each Node", 
+                  title="Rewards Balance Over Time for Each Node",
                   labels={"Rewards balance": "Rewards Balance"})
 
     for trace in fig.data:
@@ -108,11 +121,16 @@ def visualize(df):
         yaxis=dict(showgrid=True, gridcolor='lightgrey', gridwidth=0.1)
     )
     # Modify as needed.
-    output_html_path = "/home/{user}/rewards_balance_plot.html"
+
+    output_html_file = 'rewards_balance_plot.html'
+    output_html_path = os.path.join(basedir, output_html_file)
     fig.write_html(output_html_path)
 
-# Modify as needed.
-df = enhanced_extract_data("/home/{user}/resources.log")
+
+reslog = 'resources.log'
+df_path = os.path.join(basedir, reslog)
+
+print(df_path)
+
+df = enhanced_extract_data(df_path)
 visualize(df)
-
-
