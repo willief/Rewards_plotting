@@ -1,5 +1,5 @@
-#!/bin/bash
 
+#!/<path-to-venv>/bin/python
 #This script requires root user privileges
 
 # Check if the script is running with sudo privileges
