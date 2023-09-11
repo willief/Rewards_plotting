@@ -7,17 +7,19 @@ Track and plot Safe Network node rewards.
 - recent Linux. preferably Ubuntu
 - safe client
 - safe node
-  ```
+
 ## Setup
 
 - Ensure the script is executable:
--
+
   ```bash
   chmod +x path_to_script/setup.sh
 
   ```
+
 - Execute the script
--
+
+ ```bash
   ./path_to_script/install.sh
 
   ```
