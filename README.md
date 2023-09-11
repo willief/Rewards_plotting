@@ -10,10 +10,11 @@ Track and plot Safe Network node rewards.
   ```
 ## Setup
 
-
 - Ensure the script is executable:
+-
   ```bash
   chmod +x path_to_script/setup.sh
+
   ```
 - Execute the script
   ./path_to_script/install.sh
@@ -32,7 +33,7 @@ All necessary permissions and crontab entries are set by the script
   */10 * * * * /bin/bash $HOME/resources.sh >> $HOME/resources.log 2>&1
   ```
   This job will take a snapshot of your node/nodes resources and rewards balance every 10 minutes. The data will be appended to `resources.log`.
-- To change this interval or data destination, ppen the crontab for editing:
+- To change this interval or data destination, open the crontab for editing:
   ```bash
   crontab -e
 
