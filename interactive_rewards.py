@@ -1,5 +1,13 @@
 import pandas as pd
 import plotly.express as px
+import os
+
+# Get the user's home directory
+user_home = os.path.expanduser("~")
+
+# Define the rest of the path
+basedir = os.path.join(user_home, ".local", "share",
+                       "safe", "tools", 'rewards_plotting')
 
 def convert_value(value, format_type, default=0):
     if format_type == 'float':
@@ -108,11 +116,14 @@ def visualize(df):
         yaxis=dict(showgrid=True, gridcolor='lightgrey', gridwidth=0.1)
     )
     # Modify as needed.
-    output_html_path = "/home/{user}/rewards_balance_plot.html"
+    output_html_file = 'rewards_balance_plot.html'
+    output_html_path = os.path.join(basedir, output_html_file)
     fig.write_html(output_html_path)
 
 # Modify as needed.
-df = enhanced_extract_data("/home/{user}/resources.log)
+reslog = 'resources.log'
+df_path = os.path.join(basedir, reslog)
+df = enhanced_extract_data(df_path)
 visualize(df)
 
 
