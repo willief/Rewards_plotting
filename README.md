@@ -17,23 +17,31 @@ Track and plot Safe Network node rewards.
 
   ```
 - Execute the script
+-
   ./path_to_script/install.sh
+
   ```
 
 > **Note**: This script will install a virtual environment using venv. This helps to avoid potential conflicts between packages and ensures a clean, isolated environment for your project.
 
 ### 1. Script Placement & Permissions
+
 This script will install to $(HOME)/.local/share/safe/tools/Rewards_plotting; modify as needed.
-All necessary permissions and crontab entries are set by the script
+All necessary permissions and crontab entries are now set by the script.
 
 ### 2. Cron Job Setup
-```
+
 - The setup script will add the following entry to your crontab
- 
+-  
+
+```bash
   */10 * * * * /bin/bash $HOME/resources.sh >> $HOME/resources.log 2>&1
   ```
-  This job will take a snapshot of your node/nodes resources and rewards balance every 10 minutes. The data will be appended to `resources.log`.
+  
+This job will take a snapshot of your node/nodes resources and rewards balance every 10 minutes. The data will be appended to `resources.log`.
+
 - To change this interval or data destination, open the crontab for editing:
+
   ```bash
   crontab -e
 
@@ -41,9 +49,10 @@ All necessary permissions and crontab entries are set by the script
   Also remember to remove the resources.log file between runs!  ##TODO   clean=up script
 
 ### 3. Graph Generation
+
 - Once you have run for a few hours and have enough data, you can generate the graph.
-- Before running `interactive_rewards.py`, modify the paths specified on lines 111 and 115.
 - Execute the script:
+
   ```bash
   python3 interactive_rewards.py
   ```
@@ -52,19 +61,15 @@ All necessary permissions and crontab entries are set by the script
 
 - The resulting plot will be saved in your home directory as `rewards_balance_plot.html`. This graph is interactive: you can zoom in, select specific nodes, and more.
 
-
 ---
 
-
-### resources.sh:
+### resources.sh
 
 This Bash script gathers data on your node/nodes.
 
-base_dir="${HOME}/.local/share/safe/node": This line sets the base_dir variable to the path ~/.local/share/safe/node, which is typically 
-located in the user's home directory.
+base_dir="${HOME}/.local/share/safe/node": This line sets the base_dir variable to the path ~/.local/share/safe/node, which is typically located in the user's home directory.
 
-declare -A dir_pid: This declares an associative array called dir_pid, which will be used to store directory names as keys and corresponding 
-process IDs (PIDs) as values.
+declare -A dir_pid: This declares an associative array called dir_pid, which will be used to store directory names as keys and corresponding process IDs (PIDs) as values.
 
 node_number=0: Initializes a variable node_number to 0, which will be used to keep track of the number of nodes being processed.
 
@@ -82,9 +87,9 @@ Prints the status, memory usage, and CPU usage.
 Counts the number of file descriptors associated with the process.
 Checks if a directory named record_store exists in the node's directory and, if so, counts the number of records and displays disk usage.
 
-### interactive_rewards.py:
+### interactive_rewards.py
 
-The script identifies specific lines that contain data related to various metrics such as timestamps, 
+The script identifies specific lines that contain data related to various metrics such as timestamps,
 node information, process IDs (PIDs), memory usage, records, disk usage, CPU usage, file descriptors, and rewards balance.
 The extracted data is converted into a Pandas DataFrame.
 
