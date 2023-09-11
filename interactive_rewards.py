@@ -2,12 +2,11 @@ import pandas as pd
 import plotly.express as px
 import os
 
-
 # Get the user's home directory
 user_home = os.path.expanduser("~")
 
 # Define the rest of the path
-basedir = os.path.join(user_home, ".local", "share",
+datadir = os.path.join(user_home, ".local", "share",
                        "safe", "tools", 'rewards_plotting')
 
 
@@ -118,19 +117,18 @@ def visualize(df):
         plot_bgcolor='#dee0df',
         margin=dict(t=42, b=42, l=42, r=42, pad=2),
         xaxis=dict(showgrid=True, gridcolor='lightgrey', gridwidth=0.1),
-        yaxis=dict(showgrid=True, gridcolor='lightgrey', gridwidth=0.1)
-    )
+        yaxis=dict(showgrid=True, gridcolor='lightgrey', gridwidth=0.1))
     # Modify as needed.
 
     output_html_file = 'rewards_balance_plot.html'
-    output_html_path = os.path.join(basedir, output_html_file)
+    output_html_path = os.path.join(datadir, output_html_file)
     fig.write_html(output_html_path)
 
 
 reslog = 'resources.log'
-df_path = os.path.join(basedir, reslog)
-
+df_path = os.path.join(datadir, reslog)
 print(df_path)
 
 df = enhanced_extract_data(df_path)
+
 visualize(df)

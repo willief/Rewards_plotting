@@ -43,5 +43,5 @@ echo "--------------------------Rewards Plotting installation is complete-------
 echo ""
 echo ""
 echo ""
-echo "  Once you have run for a few hours and have enough data, you can generate the graph.  "
-echo " Your graph will be stored as See README.md"
+echo " Once you have run for a few hours and have enough data, you can generate the graph.  "
+echo " Your graph will be stored as ~/.local/share/safe/tools/rewards_plotting/rewards_balance_plot.html"
