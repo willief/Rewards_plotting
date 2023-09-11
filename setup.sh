@@ -1,34 +1,32 @@
 #!/bin/bash
 
-#create install dir 
+# Set the installation directory
 install_dir="${HOME}/.local/share/safe/tools/rewards_plotting"
+
+# Check if the directory doesn't exist, create it
 if [[ ! -d $install_dir ]]; then
     mkdir -p $install_dir
-    
 fi 
 
-# copy assets to install dir
-
-for file in *;
-do
+# Copy assets to the installation directory
+for file in *; do
     cp -v  $file $install_dir;
-done    
+done
 
-#set up venv
+# Set up a virtual environment (venv)
 python3 -m venv $install_dir/RPvenv
 source $install_dir/RPvenv/bin/activate
 
-#sort perms
+# Sort permissions for certain scripts
 chmod +x -v \
   install_prereqs.sh \
   ./resources.sh \
   ./interactive_rewards.py
 
-#get prereqs
-
+# Get prerequisites by running install_prereqs.sh
 bash ./install_prereqs.sh
 
-#set up cron job
+# Set up a cron job to periodically run resources.sh
 echo ""
 echo "This script will take a snapshot of your node/nodes resources and rewards balance every 10 minutes."
 echo "The data will be appended to resources.log."
@@ -39,7 +37,7 @@ echo "*/10 * * * * /bin/bash $install_dir/resources.sh >> $install_dir/resources
 crontab tmpcron 
 rm tmpcron
 
-
+# Installation completion message
 echo ""
 echo "--------------------------Rewards Plotting installation is complete------------------------------"
 echo ""
