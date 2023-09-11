@@ -4,6 +4,7 @@ Track and plot Safe Network node rewards.
 
 ## Requirements
 
+- recent Linux. preferably Ubuntu
 - safe client
 - safe node
   ```
@@ -12,10 +13,9 @@ Track and plot Safe Network node rewards.
 
 - Ensure the script is executable:
   ```bash
-  chmod +x path_to_script/install.sh
+  chmod +x path_to_script/setup.sh
   ```
-- Execute the script with root privileges:
-  ```bash
+- Execute the script
   ./path_to_script/install.sh
   ```
 
@@ -23,22 +23,21 @@ Track and plot Safe Network node rewards.
 
 ### 1. Script Placement & Permissions
 This script will install to $(HOME)/.local/share/safe/tools/Rewards_plotting; modify as needed.
-All ecessary permissions are set by the script
+All necessary permissions and crontab entries are set by the script
 
 ### 2. Cron Job Setup
-
-- Open the crontab for editing:
-  ```bash
-  crontab -e
-  ```
-- Add the following job to run the script every 10 minutes:
-  ```bash
+```
+- The setup script will add the following entry to your crontab
+ 
   */10 * * * * /bin/bash $HOME/resources.sh >> $HOME/resources.log 2>&1
   ```
   This job will take a snapshot of your node/nodes resources and rewards balance every 10 minutes. The data will be appended to `resources.log`.
+- To change this interval or data destination, ppen the crontab for editing:
+  ```bash
+  crontab -e
 
   Note: Don't forget to comment out or remove this cron job if you no longer need it (in between tests), as it will run indefinitely otherwise.
-  Also remember to remove the resources.log file between runs!
+  Also remember to remove the resources.log file between runs!  ##TODO   clean=up script
 
 ### 3. Graph Generation
 - Once you have run for a few hours and have enough data, you can generate the graph.
