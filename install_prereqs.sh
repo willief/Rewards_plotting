@@ -33,10 +33,10 @@ echo "Python 3 and pip setup complete."
 
 # Install other pre-reqs
 echo "installing pandas"
-sudo pip install pandas
+sudo pip3 install pandas
 
 echo "installing plotly"
-sudo pip install plotly.express
+sudo pip3 install plotly.express
 
 echo "All required packages have been installed"
 
