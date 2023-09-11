@@ -57,7 +57,7 @@ For simplicity, I am using the home directory; modify as needed.
 
 ### 3. Graph Generation
 - Once you have run for a few hours and have enough data, you can generate the graph.
-- Before running `interactive_rewards.py`, modify the paths specified on lines 78 and 82.
+- Before running `interactive_rewards.py`, modify the paths specified on lines 111 and 115.
 - Execute the script:
   ```bash
   python3 interactive_rewards.py
