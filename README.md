@@ -61,7 +61,9 @@ This job will take a snapshot of your node/nodes resources and rewards balance e
 
 ### 4. Viewing the Graph
 
-- The resulting plot will be saved in your home directory as `rewards_balance_plot.html`. This graph is interactive: you can zoom in, select specific nodes, and more.
+- The resulting plot will be saved in the app directory as
+`~/.local/share/safe/tools/rewards_plotting/rewards_balance_plot.html`.
+- This graph is interactive: you can zoom in, select specific nodes, and more.
 
 ---
 
