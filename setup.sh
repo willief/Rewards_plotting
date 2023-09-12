@@ -13,6 +13,9 @@ for file in *; do
     cp -v  $file $install_dir;
 done
 
+#Install venv
+sudo apt install python3.10-venv
+
 # Set up a virtual environment (venv)
 python3 -m venv $install_dir/RPvenv
 source $install_dir/RPvenv/bin/activate
