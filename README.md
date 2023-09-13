@@ -20,7 +20,7 @@ Track and plot Safe Network node rewards.
 - Execute the script
 
  ```bash
-  ./path_to_script/install.sh
+  ./path_to_script/setup.sh
 
   ```
 
