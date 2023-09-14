@@ -34,8 +34,7 @@ All necessary permissions and crontab entries are now set by the script.
 
 ### 2. Cron Job Setup
 
-- The setup script will add the following entry to your crontab
--  
+- The setup script will add the following entry to your crontab 
 
 ```bash
   */10 * * * * /bin/bash $HOME/resources.sh >> $HOME/resources.log 2>&1
