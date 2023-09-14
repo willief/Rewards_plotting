@@ -78,7 +78,7 @@ declare -A dir_pid: This declares an associative array called dir_pid, which wil
 
 node_number=0: Initializes a variable node_number to 0, which will be used to keep track of the number of nodes being processed.
 
-The script enters a for loop that iterates over each directory within the base_dir. 
+The script enters a for loop that iterates over each directory within the base_dir.
 The loop checks if there is a file named safenode.pid inside each directory and, if found, retrieves the PID and stores it in the dir_pid associative array.
 
 Another for loop iterates over the keys of the dir_pid associative array, which are directory names containing the nodes.
