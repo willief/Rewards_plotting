@@ -7,6 +7,7 @@ Track and plot Safe Network node rewards.
 - recent Linux. preferably Ubuntu
 - safe client
 - safe node
+- sudo access - (ONLY if venv is not already installed)
 
 ## Setup
 
@@ -24,7 +25,7 @@ Track and plot Safe Network node rewards.
 
   ```
 
-> **Note**: This script will install a virtual environment using venv. This helps to avoid potential conflicts between packages and ensures a clean, isolated environment for your project.
+> **Note**: This script will install a virtual environment using venv. This helps to avoid potential conflicts between packages and ensures a clean, isolated environment for your project. If venv is not on your system already, you will be prompted for your passwrd to allow the install.
 
 ### 1. Script Placement & Permissions
 
@@ -56,14 +57,14 @@ This job will take a snapshot of your node/nodes resources and rewards balance e
 - Execute the script:
 
   ```bash
-  python3 interactive_rewards.py
+  ./create_graphs.sh
   ```
 
 ### 4. Viewing the Graph
 
 - The resulting plot will be saved in the app directory as
 `~/.local/share/safe/tools/rewards_plotting/rewards_balance_plot.html`.
-- This graph is interactive: you can zoom in, select specific nodes, and more.
+- This graph is interactive: you can zoom in, select specific nodes, and more using most browsers.    Issues have been reported with Firefox, Brave is known to work well.
 
 ---
 
@@ -91,9 +92,9 @@ Prints the status, memory usage, and CPU usage.
 Counts the number of file descriptors associated with the process.
 Checks if a directory named record_store exists in the node's directory and, if so, counts the number of records and displays disk usage.
 
-### interactive_rewards.py
+### create_graphs.sh
 
-The script identifies specific lines that contain data related to various metrics such as timestamps,
+The script activates the virtual environment and calls a python program which identifies specific lines that contain data related to various metrics such as timestamps,
 node information, process IDs (PIDs), memory usage, records, disk usage, CPU usage, file descriptors, and rewards balance.
 The extracted data is converted into a Pandas DataFrame.
 
