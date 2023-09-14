@@ -48,7 +48,7 @@ This job will take a snapshot of your node/nodes resources and rewards balance e
   crontab -e
 
   Note: Don't forget to comment out or remove this cron job if you no longer need it (in between tests), as it will run indefinitely otherwise.
-  Also remember to remove the resources.log file between runs!  ##TODO   clean=up script
+  Also remember to remove the resources.log file between runs!  ##TODO   cleanup script
 
 ### 3. Graph Generation
 

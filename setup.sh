@@ -24,7 +24,7 @@ source $install_dir/RPvenv/bin/activate
 chmod +x -v \
   install_prereqs.sh \
   ./resources.sh \
-  ./interactive_rewards.py
+  #./interactive_rewards.py
 
 # Get prerequisites by running install_prereqs.sh
 bash ./install_prereqs.sh
