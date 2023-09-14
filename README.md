@@ -7,6 +7,7 @@ Track and plot Safe Network node rewards.
 - recent Linux. preferably Ubuntu
 - safe client
 - safe node
+- sudo access - (ONLY if venv is not already installed)
 
 ## Setup
 
@@ -24,7 +25,7 @@ Track and plot Safe Network node rewards.
 
   ```
 
-> **Note**: This script will install a virtual environment using venv. This helps to avoid potential conflicts between packages and ensures a clean, isolated environment for your project.
+> **Note**: This script will install a virtual environment using venv. This helps to avoid potential conflicts between packages and ensures a clean, isolated environment for your project. If venv is not on your system already, you will be prompted for your passwrd to allow the install.
 
 ### 1. Script Placement & Permissions
 
@@ -33,8 +34,7 @@ All necessary permissions and crontab entries are now set by the script.
 
 ### 2. Cron Job Setup
 
-- The setup script will add the following entry to your crontab
--  
+- The setup script will add the following entry to your crontab 
 
 ```bash
   */10 * * * * /bin/bash $HOME/resources.sh >> $HOME/resources.log 2>&1
@@ -56,14 +56,14 @@ This job will take a snapshot of your node/nodes resources and rewards balance e
 - Execute the script:
 
   ```bash
-  python3 interactive_rewards.py
+  ./create_graphs.sh
   ```
 
 ### 4. Viewing the Graph
 
 - The resulting plot will be saved in the app directory as
 `~/.local/share/safe/tools/rewards_plotting/rewards_balance_plot.html`.
-- This graph is interactive: you can zoom in, select specific nodes, and more.
+- This graph is interactive: you can zoom in, select specific nodes, and more using most browsers.    Issues have been reported with Firefox, Brave is known to work well.
 
 ---
 
@@ -77,7 +77,7 @@ declare -A dir_pid: This declares an associative array called dir_pid, which wil
 
 node_number=0: Initializes a variable node_number to 0, which will be used to keep track of the number of nodes being processed.
 
-The script enters a for loop that iterates over each directory within the base_dir. 
+The script enters a for loop that iterates over each directory within the base_dir.
 The loop checks if there is a file named safenode.pid inside each directory and, if found, retrieves the PID and stores it in the dir_pid associative array.
 
 Another for loop iterates over the keys of the dir_pid associative array, which are directory names containing the nodes.
@@ -91,9 +91,9 @@ Prints the status, memory usage, and CPU usage.
 Counts the number of file descriptors associated with the process.
 Checks if a directory named record_store exists in the node's directory and, if so, counts the number of records and displays disk usage.
 
-### interactive_rewards.py
+### create_graphs.sh
 
-The script identifies specific lines that contain data related to various metrics such as timestamps,
+The script activates the virtual environment and calls a python program which identifies specific lines that contain data related to various metrics such as timestamps,
 node information, process IDs (PIDs), memory usage, records, disk usage, CPU usage, file descriptors, and rewards balance.
 The extracted data is converted into a Pandas DataFrame.
 
