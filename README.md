@@ -37,7 +37,7 @@ All necessary permissions and crontab entries are now set by the script.
 - The setup script will add the following entry to your crontab 
 
 ```bash
-  */10 * * * * /bin/bash $HOME/resources.sh >> $HOME/resources.log 2>&1
+  */10 * * * * /bin/bash $(HOME)/.local/share/safe/tools/Rewards_plotting/resources.sh >> $(HOME)/.local/share/safe/tools/Rewards_plotting/resources.log 2>&1
   ```
   
 This job will take a snapshot of your node/nodes resources and rewards balance every 10 minutes. The data will be appended to `resources.log`.
