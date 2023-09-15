@@ -1,4 +1,4 @@
-# Rewards_plotting
+# Rewards Tracking 
 
 Track and plot Safe Network node rewards.
 
