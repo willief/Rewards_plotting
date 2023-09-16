@@ -110,3 +110,5 @@ The extracted data is then passed to the visualize function to generate the rewa
 
 ![rewards](https://github.com/javages/Rewards_plotting/assets/59794857/1f26d8df-8b05-49b7-839a-a46dc39ff631)
 
+![mem](https://github.com/javages/Rewards_plotting/assets/59794857/9b957814-068c-4e83-8c3f-dbe7d9b2b681)
+
