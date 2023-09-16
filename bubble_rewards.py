@@ -87,11 +87,11 @@ def logarithmic_bubble_visualize(df):
         yaxis=dict(showgrid=False, visible=False)
     )
     
-    output_html_path = os.path.join(os.path.expanduser("~"), ".local/share/safe/tools/Rewards_plotting/rewards_bubbles.html")
+    output_html_path = os.path.join(os.path.expanduser("~"), ".local/share/safe/tools/rewards_plotting/rewards_bubbles.html")
     fig.write_html(output_html_path)
     return output_html_path
 
-file_path = os.path.join(os.path.expanduser("~"), ".local/share/safe/tools/Rewards_plotting/resources.log")
+file_path = os.path.join(os.path.expanduser("~"), ".local/share/safe/tools/rewards_plotting/resources.log")
 df = enhanced_extract_data(file_path)
 log_bubble_plot_path = logarithmic_bubble_visualize(df)
 
