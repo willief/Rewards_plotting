@@ -105,7 +105,7 @@ def visualize(df):
     fig = px.line(df, x="Timestamp", y="Rewards balance", color="PID", line_group="PID",
                   custom_data=["Records", "Disk usage", "Memory", "CPU usage",
                                "File descriptors", "Rewards balance"],
-                  title="Rewards Balance Over Time for Each Node",
+                  title="Rewards Balance Over Time",
                   labels={"Rewards balance": "Rewards Balance"})
 
     for trace in fig.data:
@@ -113,8 +113,8 @@ def visualize(df):
 
     fig.update_layout(
         hovermode='y unified',
-        paper_bgcolor='darkgrey',
-        plot_bgcolor='#dee0df',
+        paper_bgcolor='#FFFFFF',
+        plot_bgcolor='#FFFFFF',
         margin=dict(t=42, b=42, l=42, r=42, pad=2),
         xaxis=dict(showgrid=True, gridcolor='lightgrey', gridwidth=0.1),
         yaxis=dict(showgrid=True, gridcolor='lightgrey', gridwidth=0.1))
