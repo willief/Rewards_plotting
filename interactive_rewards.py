@@ -116,8 +116,8 @@ def visualize(df):
         paper_bgcolor='#FFFFFF',
         plot_bgcolor='#FFFFFF',
         margin=dict(t=42, b=42, l=42, r=42, pad=2),
-        xaxis=dict(showgrid=True, gridcolor='lightgrey', gridwidth=0.1),
-        yaxis=dict(showgrid=True, gridcolor='lightgrey', gridwidth=0.1))
+        xaxis=dict(showgrid=True, gridcolor='#f5f5f5', gridwidth=0.05),
+        yaxis=dict(showgrid=True, gridcolor='#f5f5f5', gridwidth=0.05))
     # Modify as needed.
 
     output_html_file = 'rewards_balance_plot.html'
