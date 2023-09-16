@@ -107,4 +107,5 @@ Main Execution:
 The script calls the enhanced_extract_data function to extract data from a specified log file $(HOME)/.local/share/safe/tools/rewards_plotting/resources.log
 The extracted data is then passed to the visualize function to generate the rewards balance plot.
 
-![Screenshot from 2023-09-08 15-58-19](https://github.com/javages/Rewards_plotting/assets/59794857/7391838c-7f63-4dfb-bddb-87174d0baa42)
+![rewards](https://github.com/javages/Rewards_plotting/assets/59794857/1f26d8df-8b05-49b7-839a-a46dc39ff631)
+
