@@ -1,5 +1,5 @@
 # Rewards & Resource Tracking 
-See https://javages.github.io/
+See https://javages.github.io
 
 Track and plot Safe Network node rewards.
 
