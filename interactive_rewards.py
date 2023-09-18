@@ -1,6 +1,9 @@
 import pandas as pd
 import plotly.express as px
 import os
+import warnings 
+
+warnings.simplefilter(action='ignore', category=FutureWarning)
 
 # Get the user's home directory
 user_home = os.path.expanduser("~")
