@@ -1,6 +1,9 @@
 import pandas as pd
 import plotly.express as px
 import os
+import warnings 
+
+warnings.simplefilter(action='ignore', category=FutureWarning)
 
 def convert_value(value, format_type, default=0):
     if format_type == 'float':
